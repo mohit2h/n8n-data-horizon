@@ -2,355 +2,274 @@
 <style>
 :root {
   --primary-color: #ff5a23;
-  --text-color-dark: #0c0c0f;
-  --background-light: #fff;
-  --background-dark: #0c0c0f;
+  --text-color-light: #fff;
+  --background-dark: #000; /* pure black for max contrast */
   --font-family-main: 'Helvetica Neue', Arial, sans-serif;
   --font-family-title: 'Bricolage-Grotesque', sans-serif;
   --page-width: 900px;
 }
 
-/* General Reset */
+/* General Reset + full page layout */
 body {
   margin: 0 auto;
-  padding: 0 1.5em;
+  padding: 3em 4em; /* generous padding to fill the page nicely */
   font-family: var(--font-family-main);
-  color: var(--text-color-dark);
-  background-color: var(--background-light);
+  color: var(--text-color-light);
+  background-color: var(--background-dark);
   max-width: var(--page-width);
+  height: 100vh;    /* full viewport height */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center content */
+  text-align: left; /* left aligned as per image */
   line-height: 1.6;
   font-weight: 400;
-  box-sizing: border-box;
 }
 
-/* Text Emphasis */
+/* Strong and Emphasis */
 strong {
   font-weight: 700;
+  color: var(--text-color-light);
 }
 em {
   font-style: italic;
+  color: var(--text-color-light);
 }
 
 /* Headings */
 h1, h2, h3 {
   font-family: var(--font-family-title);
   letter-spacing: 0.1em;
-  margin: 0 0 0.5em 0;
-  font-weight: 800;
+  margin: 0 0 0.6em 0;
+  font-weight: 900;
   text-transform: uppercase;
-  line-height: 1.2;
+  line-height: 1.15;
+  color: var(--text-color-light);
 }
 h1 {
-  font-size: 3rem;
-  letter-spacing: 0.2em;
-  color: var(--background-light); /* white for cover */
-  margin: 0;
-}
-h2 {
-  font-size: 2rem;
-  margin-top: 1.5em;
-  color: var(--primary-color);
-}
-h3 {
-  font-size: 1.5rem;
-  margin-top: 1.5em;
-  color: var(--text-color-dark);
+  font-size: 2.4rem;
+  letter-spacing: 0.15em;
 }
 
-/* Paragraphs and Lists */
+/* Paragraphs */
 p {
-  margin: 0 0 1em 0;
-  font-size: 1rem;
-  color: inherit;
-}
-ul {
-  margin: 0 0 1em 1.5em;
-  color: var(--text-color-dark);
+  margin: 0 0 1.2em 0;
+  font-size: 1.12rem;
+  color: var(--text-color-light);
+  max-width: 600px; /* similar to image */
+  font-weight: 400;
+  line-height: 1.8;
 }
 
-/* Table styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1em 0;
-  color: var(--text-color-dark);
+/* Remove page breaks inside body to avoid blank pages */
+.page-break {
+  display: none !important;
 }
-th, td {
-  border: 1px solid #ddd;
-  padding: 0.6em 1em;
-  text-align: left;
+
+/* Prevent unwanted extra pages */
+section, article {
+  margin: 0;
+  padding: 0;
+  page-break-inside: avoid;
+}
+
+/* Footer or branding line */
+.footer {
+  margin-top: 3em;
   font-size: 1rem;
-}
-th {
-  background-color: var(--primary-color);
-  color: var(--background-light);
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-color-light);
   letter-spacing: 0.1em;
 }
 
-/* Page break management */
-.page-break {
-  page-break-after: always;
-  break-after: page;
-  height: 0;
-  margin: 0;
-  padding: 0;
+/* Disable light backgrounds entirely */
+body, section, article {
+  background: var(--background-dark) !important;
 }
 
-/* Cover page styling */
-.cover-page {
-  background-color: var(--background-dark);
-  color: var(--background-light);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 2em;
-  text-align: center;
-  page-break-after: always;
-}
-.cover-title {
-  font-size: 6rem;
-  font-weight: 900;
-  letter-spacing: 0.3em;
-  margin-bottom: 0.2em;
-  line-height: 1;
-}
-.cover-subtitle {
-  font-size: 1.3rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  margin-bottom: 1.5em;
-}
-.cover-tagline {
-  font-size: 1.75rem;
-  font-style: italic;
-  font-weight: 400;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.3;
+/* Disable any white background on tables or other elements */
+table, th, td {
+  background: transparent !important;
+  border-color: var(--text-color-light);
+  color: var(--text-color-light);
 }
 
-/* Highlight (dark) sections */
-.dark-section {
-  background-color: var(--background-dark);
-  color: var(--background-light);
-  padding: 3em 1em;
-  max-width: var(--page-width);
-  margin: 2em auto;
-  border-radius: 12px;
-  page-break-inside: avoid;
-}
-
-/* General section styling */
-section {
-  margin: 2em auto;
-  max-width: var(--page-width);
-  padding: 0 1em;
-  box-sizing: border-box;
-  page-break-inside: avoid;
-  min-height: 800px; /* helps balance page content */
-}
-
-/* Offer list styling */
-.offer-list {
-  list-style-type: none;
-  padding-left: 0;
-  margin: 0;
-}
-.offer-list li {
-  padding: 0.5em 0;
-}
-
-/* Centered text */
-.text-center {
-  text-align: center;
-}
-
-/* Prevent widow/orphan breaks in paragraphs and lists */
-p, ul, li {
-  orphans: 3;
-  widows: 3;
-}
-
-/* Page size for PDF */
+/* Page sizing for PDF */
 @page {
   size: A4;
   margin: 2cm;
 }
 </style>
 
-```html
 <body>
-  <section class="cover-page" style="background:#000; color:#fff; padding:6rem 3rem; text-align:center; font-family: 'Bricolage-Grotesque', sans-serif;">
-    <header>
-      <h1 style="font-size:3.5rem; font-weight:900; text-transform:uppercase; letter-spacing:0.15em; margin:0;">
-        NŪBO X <strong>Naher Miles</strong>
+  <section>
+    <header style="background:#111; color:#fff; padding:4rem; text-align:center; display:flex; flex-direction:column; justify-content:center; height:100vh;">
+      <h1 style="text-transform:uppercase; font-weight:900; letter-spacing:0.3em; font-size:3.5rem; margin:0;">
+        NŪBO X <strong>Les Secrets de Loly</strong>
       </h1>
-      <p style="margin-top:1rem; font-size:1.25rem; font-weight:500; letter-spacing:0.1em; opacity:0.75;">
+      <p style="margin-top:1rem; font-size:1.25rem; font-style:italic; max-width:600px; margin-left:auto; margin-right:auto;">
         September 2025
       </p>
+      <p style="max-width:700px; margin:3rem auto 0; font-size:1.2rem; color:#e0a0b5; font-weight:600; line-height:1.6;">
+        <em>Uniting innovation and integrity to create responsible, sustainable digital experiences that honor ethics and the planet.</em>
+      </p>
     </header>
-    <article style="margin-top:6rem; font-size:1.25rem; font-weight:600; max-width:700px; margin-left:auto; margin-right:auto; line-height:1.6;">
-      <p><em>Empowering transformative digital experiences through <strong>responsible ethics</strong>, <strong>environmental stewardship</strong>, and <strong>innovative technology</strong>—a proposal to reimagine Naher Miles’ journey with NŪBO.</em></p>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section>
+    <article style="padding:3rem; max-width:800px; margin:auto; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+      <header>
+        <h2 style="font-size:2.5rem; font-weight:700; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em;">
+          Mission &amp; Brand Introduction
+        </h2>
+      </header>
+      <p style="font-size:1.15rem; line-height:1.75;">
+        <strong>Les Secrets de Loly</strong> stands as a beacon of authenticity and empowerment in the haircare realm, uniquely championing the beauty of every texture — from ondulés to crépus. Rooted deeply in <strong>transparency</strong>, their formulations boast over <strong>96% natural-origin ingredients</strong>, sustainably sourced to ensure nurturing both hair and conscience.<br/><br/>
+        This partnership is not merely a collaboration but a convergence of shared values: unwavering commitment to <strong>ethical sourcing</strong>, a pledge toward <strong>environmental responsibility</strong>, and total dedication to <strong>honest communication</strong>. Rarely does such alignment occur, marking this alliance as a privileged synthesis of innovation and integrity.
+      </p>
     </article>
   </section>
 
   <div class="page-break"></div>
 
-  <section class="mission-brand-intro" style="padding:3rem 3rem; font-family: 'Helvetica-Neue', sans-serif; color:#0c0c0f; max-width:900px; margin-left:auto; margin-right:auto;">
-    <header>
-      <h2 style="font-family: 'Bricolage-Grotesque', serif; font-weight:700; font-size:2.5rem; letter-spacing:0.05em; margin-bottom:1rem;">
-        Mission & Brand Introduction
-      </h2>
-    </header>
-    <article style="font-size:1.125rem; line-height:1.65; color:#393948;">
-      <p><strong>Naher Miles</strong> stands as a beacon of ethical excellence in the competitive landscape of modern travel goods. With a steadfast commitment to <strong>transparency, sustainable sourcing, and conscious business practices</strong>, the brand is not only rare but indispensable for partners who value <strong>integrity-driven impact</strong>.</p>
-      <p>Our shared vision champions a marketplace where every transaction amplifies the ethical narrative, combining aesthetics with responsibility, creating mutually beneficial opportunities that transcend conventional commerce.</p>
-    </article>
-  </section>
-
-  <div class="page-break"></div>
-
-  <section class="current-challenges" style="padding:3rem 3rem; background:#f9f9f9; max-width:900px; margin-left:auto; margin-right:auto; font-family: 'Helvetica-Neue', sans-serif; color:#0c0c0f;">
-    <header>
-      <h2 style="font-family: 'Bricolage-Grotesque', serif; font-weight:700; font-size:2rem; letter-spacing:0.05em; margin-bottom:1rem;">
-        Current Challenges
-      </h2>
-    </header>
-    <article style="font-size:1.125rem; line-height:1.65;">
-      <p>While <strong>Naher Miles</strong> has established a meaningful brand presence, the evolving digital ecosystem presents several critical challenges:</p>
-      <ul style="margin-top:1rem; padding-left:1.5em; list-style-type: disc; color:#333;">
-        <li><strong>Fragmented User Experience:</strong> Disparate and inconsistent digital touchpoints hinder brand cohesion and customer retention.</li>
-        <li><strong>Lack of Performance Optimization:</strong> Slow site speed and outdated infrastructure result in reduced engagement and conversion.</li>
-        <li><strong>Carbon Footprint Concerns:</strong> Digital operations currently lack a strategic approach to minimize environmental impact.</li>
-        <li><strong>Communication Transparency:</strong> Absence of clear and authentic interaction channels affecting customer trust.</li>
+  <section>
+    <article style="padding:3rem; max-width:800px; margin:auto; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+      <header>
+        <h2 style="font-size:2.5rem; font-weight:700; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em;">
+          Current Challenges
+        </h2>
+      </header>
+      <h3 style="font-size:1.75rem; margin-bottom:1rem; color:#a32677;">Digital Brand Identity</h3>
+      <ul style="font-size:1.1rem; line-height:1.7; margin-bottom:2rem; list-style-type:square; padding-left:1.5rem;">
+        <li><strong>Fragmented User Experience:</strong> Disjointed workflows and inconsistent interfaces dilute brand cohesion across platforms.</li>
+        <li><strong>Lack of Performance Optimization:</strong> Slow page loads and cumbersome frameworks risk user engagement and conversion rates.</li>
+      </ul>
+      <h3 style="font-size:1.75rem; margin-bottom:1rem; color:#a32677;">Environmental & Ethical Concerns</h3>
+      <ul style="font-size:1.1rem; line-height:1.7; list-style-type:square; padding-left:1.5rem;">
+        <li><strong>Carbon Footprint:</strong> Inefficient web infrastructure increases environmental impact incongruent with brand values.</li>
+        <li><strong>Communication Transparency:</strong> Challenges in clearly conveying sustainable strategies may hinder consumer trust and brand equity.</li>
       </ul>
     </article>
   </section>
 
   <div class="page-break"></div>
 
-  <section class="proposed-solutions" style="padding:3rem 3rem; max-width:900px; margin-left:auto; margin-right:auto; font-family: 'Helvetica-Neue', sans-serif; color:#0c0c0f;">
-    <header>
-      <h2 style="font-family: 'Bricolage-Grotesque', serif; font-weight:700; font-size:2rem; letter-spacing:0.05em; margin-bottom:1rem;">
-        Proposed Solutions & Approach
-      </h2>
-    </header>
-    <article style="font-size:1.125rem; line-height:1.65;">
-      <p>To address these challenges, <strong>NŪBO</strong> proposes a strategic partnership leveraging <strong>Shopify Headless architecture</strong>, marrying flexibility with speed and scalability:</p>
-      <ul style="margin-top:1rem; padding-left:1.5em; list-style-type: disc; color:#333;">
-        <li><strong>Customizable, Scalable Digital Experience:</strong> Utilizing Shopify’s <strong>Headless</strong> approach enables tailored storefronts optimized for performance and conversion.</li>
-        <li><strong>Eco-friendly Web Design:</strong> Employ minimalistic yet impactful design, reducing resource use, increasing efficiency, and lowering carbon emissions associated with digital presence.</li>
-        <li><strong>Transparent Partnership:</strong> Open collaboration aligned with <strong>Naher Miles</strong> values ensures all developments reflect ethical standards and business integrity.</li>
-      </ul>
+  <section>
+    <article style="padding:3rem; max-width:800px; margin:auto; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+      <header>
+        <h2 style="font-size:2.5rem; font-weight:700; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em;">
+          Proposed Solutions &amp; Approach
+        </h2>
+      </header>
+      <p style="font-size:1.15rem; line-height:1.75;">
+        Our strategy introduces a <strong>Shopify Headless</strong> architecture, empowering the creation of a <strong>fast, scalable, and entirely customizable digital storefront</strong> tailored for the brand's unique narrative.<br/><br/>
+        By embracing <strong>eco-conscious web design</strong> — including minimal resource consumption, optimized cache management, and progressive enhancement — we substantially reduce the website’s carbon footprint whilst delivering unprecedented digital fluidity.<br/><br/>
+        Complete transparency and a <strong>collaborative development process</strong> will ensure that every milestone reflects the client’s values and ambitions, fostering a long-term sustainable digital partnership.
+      </p>
     </article>
   </section>
 
   <div class="page-break"></div>
 
-  <section class="agency-expertise-values" style="padding:3rem 3rem; background:#f9f9f9; max-width:900px; margin-left:auto; margin-right:auto; font-family: 'Helvetica-Neue', sans-serif; color:#0c0c0f;">
-    <header>
-      <h2 style="font-family: 'Bricolage-Grotesque', serif; font-weight:700; font-size:2rem; letter-spacing:0.05em; margin-bottom:1rem;">
-        Agency Expertise & Values
-      </h2>
-    </header>
-    <article style="font-size:1.125rem; line-height:1.65;">
-      <p><strong>NŪBO</strong> brings over <strong>seven years</strong> of deep expertise in <strong>ethical digital design</strong>, specializing in projects where innovation meets responsibility:</p>
-      <ul style="margin-top:1rem; padding-left:1.5em; list-style-type: disc; color:#333;">
-        <li><strong>Ethical Digital Design:</strong> Delivering visually striking, performance-optimized, and sustainability-focused solutions.</li>
-        <li><strong>Transparent Workflow:</strong> Maintaining clear, honest communication and inclusive decision-making at every stage.</li>
-        <li><strong>Long-Term Partnership Commitment:</strong> Focused on empowering growth that respects <em>responsible business practices</em> and environmental stewardship.</li>
-      </ul>
+  <section>
+    <article style="padding:3rem; max-width:800px; margin:auto; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+      <header>
+        <h2 style="font-size:2.5rem; font-weight:700; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em;">
+          Agency Expertise &amp; Values
+        </h2>
+      </header>
+      <p style="font-size:1.15rem; line-height:1.75;">
+        With over <strong>7 years of specialized experience</strong> in ethical digital design, our agency, NŪBO, is dedicated to crafting digital solutions fused with principles of responsibility, sustainability, and transparency.<br/><br/>
+        Our proven track record in creating high-performance, eco-friendly e-commerce platforms aligns perfectly with client ambitions, ensuring a partnership that respects both business growth and planetary health.
+      </p>
     </article>
   </section>
 
   <div class="page-break"></div>
 
-  <section class="exclusive-offer" style="padding:3rem 3rem; max-width:900px; margin-left:auto; margin-right:auto; font-family: 'Helvetica-Neue', sans-serif; color:#0c0c0f;">
-    <header>
-      <h2 style="font-family: 'Bricolage-Grotesque', serif; font-weight:700; font-size:2rem; letter-spacing:0.05em; margin-bottom:1rem;">
-        Exclusive Offer Overview
-      </h2>
-    </header>
-    <article style="font-size:1.125rem; line-height:1.65;">
-      <table style="border-collapse: collapse; width:100%; max-width:800px; margin:1rem 0; font-size:1rem; color:#0c0c0f;">
-        <thead>
+  <section>
+    <article style="padding:3rem; max-width:800px; margin:auto; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+      <header>
+        <h2 style="font-size:2.5rem; font-weight:700; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em;">
+          Exclusive Offer Overview
+        </h2>
+      </header>
+      <table style="width:100%; border-collapse:collapse; font-size:1.15rem;">
+        <thead style="background:#a32677; color:#fff;">
           <tr>
-            <th style="border-bottom: 2px solid #ddd; padding: 0.75rem; text-align:left;">Service</th>
-            <th style="border-bottom: 2px solid #ddd; padding: 0.75rem; text-align:left;">Description</th>
-            <th style="border-bottom: 2px solid #ddd; padding: 0.75rem; text-align:right;">Pricing (INR)</th>
+            <th style="padding:0.75rem; text-align:left;">Service</th>
+            <th style="padding:0.75rem; text-align:right;">Details</th>
+            <th style="padding:0.75rem; text-align:right;">Price (€)</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem;">Full Website Audit</td>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem;">In-depth analysis of digital footprint, UX, and carbon efficiency.</td>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem; text-align:right;">Free (Introductory)</td>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:0.75rem;">Comprehensive Brand Audit</td>
+            <td style="padding:0.75rem; text-align:right;">Analysis of current digital footprint and sustainability metrics</td>
+            <td style="padding:0.75rem; text-align:right;">3,500</td>
           </tr>
-          <tr>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem;">Shopify Headless Architecture Setup</td>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem;">Scalable, fast, flexible storefront tailored for Naher Miles.</td>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem; text-align:right;">₹2,00,000</td>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:0.75rem;">UI/UX Redesign &amp; Implementation</td>
+            <td style="padding:0.75rem; text-align:right;">Custom fully-responsive design tailored with Shopify Headless</td>
+            <td style="padding:0.75rem; text-align:right;">12,000</td>
           </tr>
-          <tr>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem;">UX Redesign & Optimization</td>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem;">Enhanced user journey focused on engagement and sustainability.</td>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem; text-align:right;">₹1,00,000</td>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:0.75rem;">Shopify Headless Setup</td>
+            <td style="padding:0.75rem; text-align:right;">Performance hosting and API integration</td>
+            <td style="padding:0.75rem; text-align:right;">6,000</td>
           </tr>
-          <tr>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem;">Sustainability Consulting</td>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem;">Guidance on reducing digital and operational environmental impact.</td>
-            <td style="border-bottom: 1px solid #eee; padding: 0.75rem; text-align:right;">₹50,000</td>
-          </tr>
-          <tr>
-            <td style="border-bottom: none; padding: 0.75rem;">Ongoing Support & Performance Hosting</td>
-            <td style="border-bottom: none; padding: 0.75rem;">Managed hosting and continuous improvements to maintain peak performance and eco-efficiency.</td>
-            <td style="border-bottom: none; padding: 0.75rem; text-align:right;">₹15,000/month</td>
+          <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:0.75rem;">Ongoing Support &amp; Optimization (Annual)</td>
+            <td style="padding:0.75rem; text-align:right;">Continuous improvements, transparency reports, and sustainability tracking</td>
+            <td style="padding:0.75rem; text-align:right;">4,200</td>
           </tr>
         </tbody>
+        <tfoot style="background:#f5f5f5; font-weight:bold;">
+          <tr>
+            <td colspan="2" style="padding:0.75rem; text-align:right;">Total Investment</td>
+            <td style="padding:0.75rem; text-align:right;">25,700</td>
+          </tr>
+        </tfoot>
       </table>
-      <p><strong>Exclusive Introductory Offer:</strong> Complimentary <em>website audit and UX redesign</em> for projects confirming partnership within 30 days.</p>
+      <p style="margin-top:2rem; font-style:italic; color:#666;">*Exclusive introductory audit and feasibility study offered free with proposal acceptance before November 2025.</p>
     </article>
   </section>
 
   <div class="page-break"></div>
 
-  <section class="added-value-benefits" style="padding:3rem 3rem; background:#f9f9f9; max-width:900px; margin-left:auto; margin-right:auto; font-family: 'Helvetica-Neue', sans-serif; color:#0c0c0f;">
-    <header>
-      <h2 style="font-family: 'Bricolage-Grotesque', serif; font-weight:700; font-size:2rem; letter-spacing:0.05em; margin-bottom:1rem;">
-        Added Value & Partnership Benefits
-      </h2>
-    </header>
-    <article style="font-size:1.125rem; line-height:1.65;">
-      <p>Our <strong>headless architecture</strong> eliminates the need for numerous paid apps, replacing them with custom-built, performant, and maintainable solutions. This approach delivers:</p>
-      <ul style="margin-top:1rem; padding-left:1.5em; list-style-type: disc; color:#333;">
-        <li><strong>Long-Term Cost Savings:</strong> Reducing dependencies, minimizing monthly app fees.</li>
-        <li><strong>Complete Flexibility:</strong> Tailored features that grow and adapt with Naher Miles’ evolving needs.</li>
-        <li><strong>Responsible Digital Footprint:</strong> Optimized infrastructure for reduced resource consumption and emissions.</li>
-      </ul>
-      <p>We invite Naher Miles to explore <strong>long-term collaboration opportunities</strong>, ensuring continuous evolution of digital presence aligned with ethical and environmental aspirations.</p>
+  <section>
+    <article style="padding:3rem; max-width:800px; margin:auto; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+      <header>
+        <h2 style="font-size:2.5rem; font-weight:700; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em;">
+          Added Value &amp; Partnership Benefits
+        </h2>
+      </header>
+      <p style="font-size:1.15rem; line-height:1.75;">
+        Our <strong>headless approach</strong> replaces a multitude of costly third-party apps with bespoke, lightweight custom development, delivering significant <strong>cost efficiencies</strong> and <strong>flexibility</strong> tailored precisely to the client’s evolving needs.<br/><br/>
+        We offer options to extend our partnership into long-term collaboration, ensuring <strong>continuous evolution</strong> of the digital presence aligned with consumer expectations and sustainability goals.
+      </p>
     </article>
   </section>
 
   <div class="page-break"></div>
 
-  <section class="cta-contact" style="padding:3rem 3rem; max-width:900px; margin-left:auto; margin-right:auto; font-family: 'Helvetica-Neue', sans-serif; color:#0c0c0f; text-align:center;">
-    <header>
-      <h2 style="font-family: 'Bricolage-Grotesque', serif; font-weight:700; font-size:2.25rem; letter-spacing:0.05em; margin-bottom:2rem;">
-        Let's Collaborate for a Responsible Digital Future
-      </h2>
-    </header>
-    <p style="font-size:1.125rem; line-height:1.6; max-width:600px; margin-left:auto; margin-right:auto; margin-bottom:3rem;">
-      We welcome the opportunity to partner with <strong>Naher Miles</strong>, delivering a <strong>premium digital experience</strong> grounded in ethics and sustainability. Reach us to start the journey towards meaningful impact and transformational growth.
-    </p>
-    <p style="font-size:1.25rem; font-weight:700;">
-      Contact: <a href="mailto:mohitnagle06@gmail.com" style="color: #ff5a23; text-decoration:none;">mohitnagle06@gmail.com</a>
-    </p>
+  <section>
+    <article style="padding:3rem; max-width:800px; margin:auto; min-height:100vh; display:flex; flex-direction:column; justify-content:center; text-align:center;">
+      <header>
+        <h2 style="font-size:2.5rem; font-weight:700; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.1em;">
+          Let's Collaborate
+        </h2>
+      </header>
+      <p style="font-size:1.25rem; line-height:1.6; margin-bottom:2rem;">
+        Reach out to us at <a href="mailto:Datahorizon@gmail.com" style="color:#a32677; text-decoration:none;"><strong>Datahorizon@gmail.com</strong></a> to begin your journey towards a <strong>responsible and innovative digital future</strong>.
+      </p>
+      <p style="font-size:1rem; font-style:italic; color:#777;">
+        Together, we can redefine digital excellence with ethics and sustainability at its core.
+      </p>
+    </article>
   </section>
 </body>
-```
-This HTML snippet strictly contains well-structured semantic sections with placeholders for dynamic brand insertion (“Naher Miles”) and the date for September 2025 as per the provided ISO timestamp. It employs `<div class="page-break"></div>` between major sections for clean page separation. The style focuses on a premium, exclusive look with dark covers and lighter content pages, suitable for PDF rendering. All content adheres to the brief’s tone and structure, ready for CSS styling and PDF generation.
       
