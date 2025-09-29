@@ -1,149 +1,188 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>NŪBO X LOOM – Collaboration Proposal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    /* General Reset */
-    body {
-      margin: 0; padding: 0;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      color: #0c0c0f; /* Dark text */
-      background: #fff; /* Default white background */
-      font-weight: 400;
-      line-height: 1.6;
-    }
-    strong {
-      font-weight: 700; /* bold key phrase */
-    }
-    em {
-      font-style: italic;
-    }
-    h1, h2, h3 {
-      font-family: 'Bricolage-Grotesque', sans-serif;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5em;
-      margin-top: 0;
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1.2;
-    }
-    h1 {
-      font-size: 3rem;
-      color: white;
-      margin: 0;
-      letter-spacing: 0.2em;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-top: 1.5em;
-      color: #ff5a23;
-    }
-    h3 {
-      font-size: 1.5rem;
-      margin-top: 1.5em;
-      color: #0c0c0f;
-    }
-    p {
-      margin: 0 0 1em 0;
-      font-size: 1rem;
-      color: inherit;
-    }
-    ul {
-      margin: 0 0 1em 1.5em;
-      color: #0c0c0f;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1em 0;
-      color: #0c0c0f;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 0.6em 1em;
-      text-align: left;
-      font-size: 1rem;
-    }
-    th {
-      background-color: #ff5a23;
-      color: white;
-      font-weight: 700; /* bold key phrase */
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    /* Page break for print/PDF */
-    .page-break {
-      page-break-before: always;
-      break-before: page;
-      height: 0;
-      margin: 0;
-      padding: 0;
-    }
-    /* Cover page styles: dark background */
-    .cover-page {
-      background: #0c0c0f;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 2em;
-      text-align: center;
-    }
-    .cover-title {
-      font-size: 6rem;
-      font-weight: 900; /* bold key phrase */
-      letter-spacing: 0.3em;
-      margin-bottom: 0.2em;
-      line-height: 1;
-    }
-    .cover-subtitle {
-      font-size: 1.3rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      margin-bottom: 1.5em;
-    }
-    .cover-tagline {
-      font-size: 1.75rem;
-      font-style: italic;
-      font-weight: 400;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.3;
-    }
-    section {
-      margin: 2em auto;
-      max-width: 900px;
-      padding: 0 1em;
-    }
-    /* Dark background section for highlights */
-    .dark-section {
-      background-color: #0c0c0f;
-      color: white;
-      padding: 3em 1em;
-      max-width: 900px;
-      margin: 2em auto;
-      border-radius: 12px;
-    }
-    /* Offer section styling */
-    .offer-list {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    .offer-list li {
-      padding: 0.5em 0;
-    }
-    .text-center {
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  ```html
+<style>
+:root {
+  --primary-color: #ff5a23;
+  --text-color-dark: #0c0c0f;
+  --background-light: #fff;
+  --background-dark: #0c0c0f;
+  --font-family-main: 'Helvetica Neue', Arial, sans-serif;
+  --font-family-title: 'Bricolage-Grotesque', sans-serif;
+  --page-width: 900px;
+}
+
+/* General Reset */
+body {
+  margin: 0 auto;
+  padding: 0 1.5em;
+  font-family: var(--font-family-main);
+  color: var(--text-color-dark);
+  background-color: var(--background-light);
+  max-width: var(--page-width);
+  line-height: 1.6;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+/* Text Emphasis */
+strong {
+  font-weight: 700;
+}
+em {
+  font-style: italic;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: var(--font-family-title);
+  letter-spacing: 0.1em;
+  margin: 0 0 0.5em 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.2em;
+  color: var(--background-light); /* white for cover */
+  margin: 0;
+}
+h2 {
+  font-size: 2rem;
+  margin-top: 1.5em;
+  color: var(--primary-color);
+}
+h3 {
+  font-size: 1.5rem;
+  margin-top: 1.5em;
+  color: var(--text-color-dark);
+}
+
+/* Paragraphs and Lists */
+p {
+  margin: 0 0 1em 0;
+  font-size: 1rem;
+  color: inherit;
+}
+ul {
+  margin: 0 0 1em 1.5em;
+  color: var(--text-color-dark);
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  color: var(--text-color-dark);
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.6em 1em;
+  text-align: left;
+  font-size: 1rem;
+}
+th {
+  background-color: var(--primary-color);
+  color: var(--background-light);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Page break management */
+.page-break {
+  page-break-after: always;
+  break-after: page;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cover page styling */
+.cover-page {
+  background-color: var(--background-dark);
+  color: var(--background-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2em;
+  text-align: center;
+  page-break-after: always;
+}
+.cover-title {
+  font-size: 6rem;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.2em;
+  line-height: 1;
+}
+.cover-subtitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5em;
+}
+.cover-tagline {
+  font-size: 1.75rem;
+  font-style: italic;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.3;
+}
+
+/* Highlight (dark) sections */
+.dark-section {
+  background-color: var(--background-dark);
+  color: var(--background-light);
+  padding: 3em 1em;
+  max-width: var(--page-width);
+  margin: 2em auto;
+  border-radius: 12px;
+  page-break-inside: avoid;
+}
+
+/* General section styling */
+section {
+  margin: 2em auto;
+  max-width: var(--page-width);
+  padding: 0 1em;
+  box-sizing: border-box;
+  page-break-inside: avoid;
+  min-height: 800px; /* helps balance page content */
+}
+
+/* Offer list styling */
+.offer-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+.offer-list li {
+  padding: 0.5em 0;
+}
+
+/* Centered text */
+.text-center {
+  text-align: center;
+}
+
+/* Prevent widow/orphan breaks in paragraphs and lists */
+p, ul, li {
+  orphans: 3;
+  widows: 3;
+}
+
+/* Page size for PDF */
+@page {
+  size: A4;
+  margin: 2cm;
+}
+</style>
+
+```html
 <body>
   <section class="cover-page" style="background:#000; color:#fff; padding:6rem 3rem; text-align:center; font-family: 'Bricolage-Grotesque', sans-serif;">
     <header>
@@ -314,6 +353,4 @@
 </body>
 ```
 This HTML snippet strictly contains well-structured semantic sections with placeholders for dynamic brand insertion (“Naher Miles”) and the date for September 2025 as per the provided ISO timestamp. It employs `<div class="page-break"></div>` between major sections for clean page separation. The style focuses on a premium, exclusive look with dark covers and lighter content pages, suitable for PDF rendering. All content adheres to the brief’s tone and structure, ready for CSS styling and PDF generation.
-</body>
-</html>
       
